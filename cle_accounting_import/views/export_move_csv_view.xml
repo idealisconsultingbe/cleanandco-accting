@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="cle_export_move_csv_default_view" model="ir.ui.view">
+        <field name="name">cle.export.move.csv.default.view</field>
+        <field name="model">cle.export.move.csv</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="state" invisible="1"/>
+                <group states="step1">
+                    <p class="text-info">Please enter a file name (with .csv extension) for your file to be generated.</p>
+                    <field name="filename" />
+                </group>
+                <group states="step2">
+                    <field name="filename" invisible="1"/>
+                    <p>The CSV has been generated, click here to download it:</p>
+                    <field name="file" filename="filename" readonly="1" nolabel="1"/>
+                </group>
+                <footer states="step1">
+                    <button string="Generate" type="object" name="action_generate" class="oe_highlight"/>
+                    <button string="Close" special="cancel"/>
+                </footer>
+                <footer states="step2">
+                    <button string="Back" type="object" name="action_back"/>
+                    <button string="Ok" special="cancel" class="oe_highlight"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_export_account_move" model="ir.actions.act_window">
+        <field name="name">Export to Efficy</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">cle.export.move.csv</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="cle_export_move_csv_default_view"/>
+        <field name="context">{}</field>
+        <field name="target">new</field>
+        <field name="help">This wizard will export all selected account move in an Efficy csv format.</field>
+        <field name="binding_model_id" ref="cle_accounting_import.model_account_move"/>
+        <field name="binding_view_types">list</field>
+    </record>
+
+</odoo>
