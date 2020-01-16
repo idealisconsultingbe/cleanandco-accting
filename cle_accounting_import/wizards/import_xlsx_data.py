@@ -126,7 +126,7 @@ class ImportJournalEntriesXlsxDataWizard(models.TransientModel):
                     taxes = self.env['account.tax'].create({
                         'name': str(float(row[14])) + '%',
                         'amount': float(row[14]),
-                        'description': row[14] + '%',
+                        'description': str(row[14]) + '%',
                         'company_id': self.env.user.company_id.id,
                     })
 
