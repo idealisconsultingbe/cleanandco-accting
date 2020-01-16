@@ -82,6 +82,7 @@ class ImportJournalEntriesXlsxDataWizard(models.TransientModel):
 
                 partner = self.env['res.partner'].search([('ref', '=', row[0])])
                 if not partner:
+                    print("Creating res.partner...")
                     partner = self.env['res.partner'].create({
                         'ref': row[0],
                         'name': get_partner_name(row[1]),
@@ -92,15 +93,16 @@ class ImportJournalEntriesXlsxDataWizard(models.TransientModel):
                     partner.write({'vat': row[3]})
 
                 product_default_code = get_product_default_code(row[9])
-
                 product = self.env['product.product'].search(
                     [('default_code', '=', product_default_code), ('name', '=', row[10])])
                 if not product:
+                    print("Creating product...")
                     product = self.env['product.product'].create({
                         'default_code': product_default_code,
                         'name': row[10],
                     })
 
+                print("Creating fiscal position")
                 fiscal_position = self.env['account.fiscal.position'].search([('name', '=', row[7])])
                 if not fiscal_position:
                     fiscal_position = self.env['account.fiscal.position'].create({
@@ -109,6 +111,7 @@ class ImportJournalEntriesXlsxDataWizard(models.TransientModel):
 
                 move = self.env['account.move'].search([('ref', '=', row[4])])
                 if not move:
+                    print("Creating Move...")
                     move = self.env['account.move'].create({
                         'partner_id': partner.id,
                         'ref': row[4],
@@ -122,21 +125,38 @@ class ImportJournalEntriesXlsxDataWizard(models.TransientModel):
                     ('name', '=', str(float(row[14])) + '%'), ('amount', '=', float(row[14]))
                 ])
                 if not taxes:
+                    print("Creating taxes...")
                     taxes = self.env['account.tax'].create({
                         'name': str(float(row[14])) + '%',
                         'amount': float(row[14]),
                         'description': row[14] + '%'
                     })
 
-                self.env['account.move.line'].create({
+                client_account = partner.property_account_receivable_id.id
+                l_acc_client = self.env['account.move.line'].search([('account_id', '=', client_account), ('move_id', '=', move.id)])
+                l_acc_client_debit = l_acc_client.debit
+                l_acc_client.unlink()
+
+                credit = row[15] if row[15] > 0 else 0
+                debit = l_acc_client_debit + (row[15] if row[15] > 0 else 0)
+                print("Creating move line...")
+                self.env['account.move.line'].create([{
                     'account_id': product.categ_id.property_account_income_categ_id.id,
                     'move_id': move.id,
                     'product_id': product.id,
                     'price_unit': row[11],
                     'quantity': row[12],
                     'tax_ids': taxes.ids,
-                    'price_subtotal': row[15]
-                })
+                    'price_subtotal': row[15],
+                    'credit': credit,
+                }, {
+                    'account_id': client_account,
+                    'move_id': move.id,
+                    'debit': debit,
+                }])
+
+                print("Posting move...")
+                move.post()
 
             self._cr.commit()
 
@@ -194,7 +214,8 @@ class ImportProductXlsxDataWizard(models.TransientModel):
                         'name': row[1],
                         'categ_id': categ_id,
                         'list_price': row[7],
-                        'taxes_id': taxes.ids
+                        'taxes_id': taxes.ids,
+                        'supplier_taxes_id': taxes.ids,
                     })
 
             self._cr.commit()

@@ -50,7 +50,7 @@
                 view_mode="form"
                 target="new"/>
 
-    <menuitem name="Import" id="account_import_menu" parent="account_accountant.menu_accounting"/>
+    <menuitem name="Import" id="account_import_menu" parent="account_accountant.menu_accounting" groups="base.group_system"/>
     <menuitem name="Import Journal Entries" id="import_xlx_journal_entries"
               parent="cle_accounting_import.account_import_menu" action="launch_journal_entries_import_data_wizard"/>
     <menuitem name="Import Products" id="import_xlx_products"
