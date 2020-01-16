@@ -103,14 +103,15 @@ class ImportJournalEntriesXlsxDataWizard(models.TransientModel):
                 fiscal_position = self.env['account.fiscal.position'].search([('name', '=', row[7])])
                 if not fiscal_position:
                     fiscal_position = self.env['account.fiscal.position'].create({
-                        'name': row[7]
+                        'name': row[7],
+                        'company_id': self.env.user.company_id.id,
                     })
 
                 move = self.env['account.move'].search([('ref', '=', row[4])])
                 if not move:
                     move = self.env['account.move'].create({
                         'partner_id': partner.id,
-                        'company_id': partner.company_id.id,
+                        'company_id': self.env.user.company_id.id,
                         'ref': row[4],
                         'document_name': row[5],
                         'invoice_date': datetime(*xlrd.xldate_as_tuple(row[6], 0)),
@@ -126,7 +127,7 @@ class ImportJournalEntriesXlsxDataWizard(models.TransientModel):
                         'name': str(float(row[14])) + '%',
                         'amount': float(row[14]),
                         'description': row[14] + '%',
-                        'company_id': partner.company_id.id,
+                        'company_id': self.env.user.company_id.id,
                     })
 
                 client_account = partner.property_account_receivable_id.id
@@ -138,7 +139,7 @@ class ImportJournalEntriesXlsxDataWizard(models.TransientModel):
                 debit = l_acc_client_debit + (row[15] if row[15] > 0 else 0)
                 self.env['account.move.line'].create([{
                     'account_id': product.categ_id.property_account_income_categ_id.id,
-                    'company_id': partner.company_id.id,
+                    'company_id': self.env.user.company_id.id,
                     'move_id': move.id,
                     'product_id': product.id,
                     'price_unit': row[11],
