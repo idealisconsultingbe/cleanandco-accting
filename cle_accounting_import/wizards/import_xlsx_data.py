@@ -82,7 +82,6 @@ class ImportJournalEntriesXlsxDataWizard(models.TransientModel):
 
                 partner = self.env['res.partner'].search([('ref', '=', row[0])])
                 if not partner:
-                    print("Creating res.partner...")
                     partner = self.env['res.partner'].create({
                         'ref': row[0],
                         'name': get_partner_name(row[1]),
@@ -96,13 +95,11 @@ class ImportJournalEntriesXlsxDataWizard(models.TransientModel):
                 product = self.env['product.product'].search(
                     [('default_code', '=', product_default_code), ('name', '=', row[10])])
                 if not product:
-                    print("Creating product...")
                     product = self.env['product.product'].create({
                         'default_code': product_default_code,
                         'name': row[10],
                     })
 
-                print("Creating fiscal position")
                 fiscal_position = self.env['account.fiscal.position'].search([('name', '=', row[7])])
                 if not fiscal_position:
                     fiscal_position = self.env['account.fiscal.position'].create({
@@ -111,9 +108,9 @@ class ImportJournalEntriesXlsxDataWizard(models.TransientModel):
 
                 move = self.env['account.move'].search([('ref', '=', row[4])])
                 if not move:
-                    print("Creating Move...")
                     move = self.env['account.move'].create({
                         'partner_id': partner.id,
+                        'company_id': partner.company_id.id,
                         'ref': row[4],
                         'document_name': row[5],
                         'invoice_date': datetime(*xlrd.xldate_as_tuple(row[6], 0)),
@@ -139,7 +136,6 @@ class ImportJournalEntriesXlsxDataWizard(models.TransientModel):
 
                 credit = row[15] if row[15] > 0 else 0
                 debit = l_acc_client_debit + (row[15] if row[15] > 0 else 0)
-                print("Creating move line...")
                 self.env['account.move.line'].create([{
                     'account_id': product.categ_id.property_account_income_categ_id.id,
                     'move_id': move.id,
@@ -155,7 +151,6 @@ class ImportJournalEntriesXlsxDataWizard(models.TransientModel):
                     'debit': debit,
                 }])
 
-                print("Posting move...")
                 move.post()
 
             self._cr.commit()
