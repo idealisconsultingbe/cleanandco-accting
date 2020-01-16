@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="wizard_journal_entries_import_form_view">
+        <field name="name">import.journal.entries.xlsx.data.wizard.form</field>
+        <field name="model">import.journal.entries.xlsx.data.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="xlsx_file"/>
+                </group>
+                <footer>
+                    <button name="import_journal_entries_xlsx_data" type="object"
+                            string="Import" class="oe_highlight"/>
+                    or
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+
+            </form>
+        </field>
+    </record>
+
+    <act_window id="launch_journal_entries_import_data_wizard"
+                name="Import Journal Entries"
+                res_model="import.journal.entries.xlsx.data.wizard"
+                view_mode="form"
+                target="new"/>
+
+    <record model="ir.ui.view" id="wizard_product_import_form_view">
+        <field name="name">import.products.xlsx.data.wizard.form</field>
+        <field name="model">import.products.xlsx.data.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="xlsx_file"/>
+                </group>
+                <footer>
+                    <button name="import_products_xlsx_data" type="object"
+                            string="Import" class="oe_highlight"/>
+                    or
+                    <button special="cancel" string="Cancel"/>
+                </footer>
+
+            </form>
+        </field>
+    </record>
+
+    <act_window id="launch_products_import_data_wizard"
+                name="Import Products"
+                res_model="import.products.xlsx.data.wizard"
+                view_mode="form"
+                target="new"/>
+
+    <menuitem name="Import" id="account_import_menu" parent="account_accountant.menu_accounting" groups="base.group_system"/>
+    <menuitem name="Import Journal Entries" id="import_xlx_journal_entries"
+              parent="cle_accounting_import.account_import_menu" action="launch_journal_entries_import_data_wizard"/>
+    <menuitem name="Import Products" id="import_xlx_products"
+              parent="cle_accounting_import.account_import_menu" action="launch_products_import_data_wizard"/>
+
+</odoo>

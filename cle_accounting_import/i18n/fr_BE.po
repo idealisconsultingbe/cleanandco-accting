@@ -1,0 +1,193 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* cle_accounting_import
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-01-14 12:27+0000\n"
+"PO-Revision-Date: 2020-01-14 12:27+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: cle_accounting_import
+#: model_terms:ir.ui.view,arch_db:cle_accounting_import.cle_export_move_csv_default_view
+msgid "Back"
+msgstr "Retour"
+
+#. module: cle_accounting_import
+#: model_terms:ir.ui.view,arch_db:cle_accounting_import.wizard_journal_entries_import_form_view
+#: model_terms:ir.ui.view,arch_db:cle_accounting_import.wizard_product_import_form_view
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: cle_accounting_import
+#: model_terms:ir.ui.view,arch_db:cle_accounting_import.cle_export_move_csv_default_view
+msgid "Close"
+msgstr "Fermer"
+
+#. module: cle_accounting_import
+#: model:ir.model.fields,field_description:cle_accounting_import.field_cle_export_move_csv__create_uid
+#: model:ir.model.fields,field_description:cle_accounting_import.field_import_journal_entries_xlsx_data_wizard__create_uid
+#: model:ir.model.fields,field_description:cle_accounting_import.field_import_products_xlsx_data_wizard__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: cle_accounting_import
+#: model:ir.model.fields,field_description:cle_accounting_import.field_cle_export_move_csv__create_date
+#: model:ir.model.fields,field_description:cle_accounting_import.field_import_journal_entries_xlsx_data_wizard__create_date
+#: model:ir.model.fields,field_description:cle_accounting_import.field_import_products_xlsx_data_wizard__create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: cle_accounting_import
+#: model:ir.model.fields,field_description:cle_accounting_import.field_cle_export_move_csv__display_name
+#: model:ir.model.fields,field_description:cle_accounting_import.field_import_journal_entries_xlsx_data_wizard__display_name
+#: model:ir.model.fields,field_description:cle_accounting_import.field_import_products_xlsx_data_wizard__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: cle_accounting_import
+#: model:ir.model.fields,field_description:cle_accounting_import.field_account_move__document_name
+msgid "Document name"
+msgstr "Nom de document"
+
+#. module: cle_accounting_import
+#: model:ir.actions.act_window,name:cle_accounting_import.action_export_account_move
+msgid "Export to Efficy"
+msgstr "Exporter au format Efficy"
+
+#. module: cle_accounting_import
+#: model:ir.model.fields,field_description:cle_accounting_import.field_cle_export_move_csv__file
+msgid "File"
+msgstr "Fichier"
+
+#. module: cle_accounting_import
+#: model:ir.model.fields,field_description:cle_accounting_import.field_cle_export_move_csv__filename
+msgid "File Name"
+msgstr "Nom du fichier"
+
+#. module: cle_accounting_import
+#: model_terms:ir.ui.view,arch_db:cle_accounting_import.cle_export_move_csv_default_view
+msgid "Generate"
+msgstr "Générer"
+
+#. module: cle_accounting_import
+#: model:ir.model.fields,field_description:cle_accounting_import.field_cle_export_move_csv__id
+#: model:ir.model.fields,field_description:cle_accounting_import.field_import_journal_entries_xlsx_data_wizard__id
+#: model:ir.model.fields,field_description:cle_accounting_import.field_import_products_xlsx_data_wizard__id
+msgid "ID"
+msgstr ""
+
+#. module: cle_accounting_import
+#: model:ir.ui.menu,name:cle_accounting_import.account_import_menu
+#: model_terms:ir.ui.view,arch_db:cle_accounting_import.wizard_journal_entries_import_form_view
+#: model_terms:ir.ui.view,arch_db:cle_accounting_import.wizard_product_import_form_view
+msgid "Import"
+msgstr ""
+
+#. module: cle_accounting_import
+#: model:ir.actions.act_window,name:cle_accounting_import.launch_journal_entries_import_data_wizard
+#: model:ir.ui.menu,name:cle_accounting_import.import_xlx_journal_entries
+msgid "Import Journal Entries"
+msgstr "Importer des Pièces Comptables"
+
+#. module: cle_accounting_import
+#: model:ir.actions.act_window,name:cle_accounting_import.launch_products_import_data_wizard
+#: model:ir.ui.menu,name:cle_accounting_import.import_xlx_products
+msgid "Import Products"
+msgstr "Importer des produits"
+
+#. module: cle_accounting_import
+#: model:ir.model,name:cle_accounting_import.model_import_journal_entries_xlsx_data_wizard
+msgid "Import journal entries xlsx data Wizard"
+msgstr ""
+
+#. module: cle_accounting_import
+#: model:ir.model,name:cle_accounting_import.model_import_products_xlsx_data_wizard
+msgid "Import products xlsx data Wizard"
+msgstr ""
+
+#. module: cle_accounting_import
+#: model:ir.model,name:cle_accounting_import.model_account_move
+msgid "Journal Entries"
+msgstr "Pièces comptables"
+
+#. module: cle_accounting_import
+#: model:ir.model.fields,field_description:cle_accounting_import.field_cle_export_move_csv____last_update
+#: model:ir.model.fields,field_description:cle_accounting_import.field_import_journal_entries_xlsx_data_wizard____last_update
+#: model:ir.model.fields,field_description:cle_accounting_import.field_import_products_xlsx_data_wizard____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: cle_accounting_import
+#: model:ir.model.fields,field_description:cle_accounting_import.field_cle_export_move_csv__write_uid
+#: model:ir.model.fields,field_description:cle_accounting_import.field_import_journal_entries_xlsx_data_wizard__write_uid
+#: model:ir.model.fields,field_description:cle_accounting_import.field_import_products_xlsx_data_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Dernière modification par"
+
+#. module: cle_accounting_import
+#: model:ir.model.fields,field_description:cle_accounting_import.field_cle_export_move_csv__write_date
+#: model:ir.model.fields,field_description:cle_accounting_import.field_import_journal_entries_xlsx_data_wizard__write_date
+#: model:ir.model.fields,field_description:cle_accounting_import.field_import_products_xlsx_data_wizard__write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: cle_accounting_import
+#: model_terms:ir.ui.view,arch_db:cle_accounting_import.cle_export_move_csv_default_view
+msgid "Ok"
+msgstr ""
+
+#. module: cle_accounting_import
+#: model_terms:ir.ui.view,arch_db:cle_accounting_import.cle_export_move_csv_default_view
+msgid "Please enter a file name (with .csv extension) for your file to be generated"
+msgstr "Veuillez entrer un nom de fichier (avec l'extension .csv) pour le générer"
+
+#. module: cle_accounting_import
+#: model:ir.model.fields,field_description:cle_accounting_import.field_cle_export_move_csv__state
+msgid "Step"
+msgstr "Étape"
+
+#. module: cle_accounting_import
+#: model:ir.model.fields.selection,name:cle_accounting_import.selection__cle_export_move_csv__state__step1
+msgid "Step 1"
+msgstr "Étape 1"
+
+#. module: cle_accounting_import
+#: model:ir.model.fields.selection,name:cle_accounting_import.selection__cle_export_move_csv__state__step2
+msgid "Step 2"
+msgstr "Étape 2"
+
+#. module: cle_accounting_import
+#: model_terms:ir.ui.view,arch_db:cle_accounting_import.cle_export_move_csv_default_view
+msgid "The CSV has been generated, click here to download it:"
+msgstr "Le CSV a été généré, cliquez dessus pour le télécharger"
+
+#. module: cle_accounting_import
+#: model_terms:ir.actions.act_window,help:cle_accounting_import.action_export_account_move
+msgid ""
+"This wizard will export all selected account move in an Efficy csv format."
+msgstr ""
+
+#. module: cle_accounting_import
+#: model:ir.model.fields,field_description:cle_accounting_import.field_import_journal_entries_xlsx_data_wizard__xlsx_file
+#: model:ir.model.fields,field_description:cle_accounting_import.field_import_products_xlsx_data_wizard__xlsx_file
+msgid "Your xlsx file"
+msgstr "Votre fichier xlsx"
+
+#. module: cle_accounting_import
+#: model:ir.model,name:cle_accounting_import.model_cle_export_move_csv
+msgid "cle.export.move.csv"
+msgstr ""
+
+#. module: cle_accounting_import
+#: model_terms:ir.ui.view,arch_db:cle_accounting_import.wizard_journal_entries_import_form_view
+#: model_terms:ir.ui.view,arch_db:cle_accounting_import.wizard_product_import_form_view
+msgid "or"
+msgstr "ou"
