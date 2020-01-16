@@ -138,6 +138,7 @@ class ImportJournalEntriesXlsxDataWizard(models.TransientModel):
                 debit = l_acc_client_debit + (row[15] if row[15] > 0 else 0)
                 self.env['account.move.line'].create([{
                     'account_id': product.categ_id.property_account_income_categ_id.id,
+                    'company_id': partner.company_id.id,
                     'move_id': move.id,
                     'product_id': product.id,
                     'price_unit': row[11],
@@ -147,6 +148,7 @@ class ImportJournalEntriesXlsxDataWizard(models.TransientModel):
                     'credit': credit,
                 }, {
                     'account_id': client_account,
+                    'company_id': partner.company_id.id,
                     'move_id': move.id,
                     'debit': debit,
                 }])
